@@ -14,7 +14,7 @@
 gemelos = []
 cont = 0 #Solo es primo si el valor es 2, el mismo número y 1
 numero = int(input("Ingrese un numero a evaluar: "))
-for n in range(1, numero + 1):
+for n in range(2, numero + 1):
     for d in range(1, n + 1):
         if n % d == 0:
             cont += 1
@@ -27,6 +27,7 @@ for i in range(len(gemelos)):
     twin = gemelos[i]+2
     if i < len(gemelos)-1:
         if gemelos[i+1] == twin:
-            print(f"({gemelos[i]},{gemelos[i+1]})",end=" ")
-            
+            print(f"({gemelos[i]},{gemelos[i+1]}),",end=" ")
+           
+           
 print("Fin")

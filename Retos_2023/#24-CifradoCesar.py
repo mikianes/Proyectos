@@ -28,6 +28,8 @@ def conmutatio(text,clave,forma):
             eventum = eventum + ","
         elif character == " ":
             eventum = eventum + " "
+        elif character == ".":
+            eventum = eventum + "."
         elif forma == "e":
             index = caesar.index(character)
             if index + int(clave) > len(caesar):

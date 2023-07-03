@@ -5,6 +5,7 @@
 */
 """
 import calendar
+import pytest
 
 def mes(mes):
     resultado = {"enero":"1","febrero":"2","marzo":"3",
@@ -36,7 +37,16 @@ def friday(m,a):
         print("No hay Viernes 13")
     else:
         print("Hay viernes 13")
-
+        
+def test_friday13_true():
+        assert friday("enero",2023) is None
+        
+def test_friday13_false_date():
+    assert  not friday("febrero",2023)
+    
+def test_friday13_invalid_month():
+    assert not friday(2,2023)
+    
 def main():
     mes = input ("Introduce el mes:")
     month = mes.lower()

@@ -20,7 +20,7 @@ import re
 def expression(expression:str):
     
     #x = re.findall(r"^[\d.]\s[-+*/()]\s[\d.]+$", expression)
-    x = re.findall(r'^[\d\s+-/*\s()]+$',expression)
+    x = re.findall(r'^[\d\s+-/*%\s()]+$',expression)
     
     
     if len(x) != 0:
@@ -35,6 +35,9 @@ def main():
    expression("r * 4")
    expression("4 a 6")
    expression("5 + -7")
+   expression("5 + 40%")
+   expression("5.5 + 9")
+   expression("5,5 + *6")
     
    
 if __name__ == "__main__":

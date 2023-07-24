@@ -13,20 +13,21 @@
  * - Me llamo.Brais Moure / Me llamo brais moure -> [" ", "b", "m"]
  */
 """
-def differences(TextInicial:str,TextFinal:str):
+def differences(TextInicial:str,TextFinal:str)-> list:
     
     first_text = list(TextInicial)
     second_text = list(TextFinal)
     result = []
     
-    if first_text == second_text:
-        print("Son iguales")
-    else:
-        print("Son diferentes")
+    if len(first_text) == len(second_text):
         
-        for x in zip(first_text,second_text):
+         for x in zip(first_text,second_text):
             if x[0]!=x[1]:
                 result.append(x[1])
+                
+    else:
+        print("Las cadenas tienen longitudes")
+        
                     
     print(result)
     

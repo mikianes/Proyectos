@@ -15,8 +15,7 @@
  */
 """
 
-T9Diccionary=["ABC2","DEF3","GHI4","JKL5","MNO6","PQRS7","TUV8","WXYZ9","0"]
-
+T9Diccionary=[";.?!1","ABC2","DEF3","GHI4","JKL5","MNO6","PQRS7","TUV8","WXYZ9","0"]
 
 def T9 (code:str)->str:
     T9Result=""
@@ -30,9 +29,9 @@ def T9 (code:str)->str:
         
 def main():
 
-   print(T9("6-666-88-777-33-3-33-888")) #MOUREDEV
-   print(T9("44-666-555-2-0-6-88-66-3-666")) #HOLA MUNDO
-   print(T9("7777-999-555-888-2-66-2-7777-0-777-88-555-33-7777")) #SYLVANAS RULES
+   print(T9("6-666-88-777-33-3-33-888-11")) #MOUREDEV.
+   print(T9("44-666-555-2-0-6-88-66-3-666-1111")) #HOLA MUNDO!
+   print(T9("7777-999-555-888-2-66-2-7777-0-777-88-555-33-7777-111")) #SYLVANAS RULES?
    print(T9("555-666-55-8-2-777-0-666-4-2-777")) #LOKTAR OGAR
    
 if __name__ == "__main__":

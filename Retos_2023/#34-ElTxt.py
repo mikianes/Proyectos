@@ -50,8 +50,8 @@ def file_writing(add:bool):
         f.write(texto)          
             
 def file_remove(file):
-    files = open(file,"w") 
-    files.close()
+    f = open(file,"w") 
+    f.close()
                
 def main(): 
     file_comprobation()

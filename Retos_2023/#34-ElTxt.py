@@ -14,7 +14,7 @@
  */
 """
 import glob
-from pathlib import Path
+
 
 def file_comprobation ():
     

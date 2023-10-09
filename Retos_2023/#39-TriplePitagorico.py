@@ -77,7 +77,7 @@ def sum_multiple(numbers:list, target:int):
                         
 def main():
    
-    cuadrados(17)
+    cuadrados(20)
     print("---------")
     ternas()
     

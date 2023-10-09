@@ -34,7 +34,7 @@ def ternas ():
 
 def cuadrados (tar:int):
 
-    #Crear la lista de números elevados    
+    #Crear la lista de números elevados   
     for num in range(1,tar +1,1):
         lista.append(int(math.pow(num,2)))
         

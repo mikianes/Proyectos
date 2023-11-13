@@ -29,12 +29,14 @@ def weather (days:int, temp_Ini:int, prop_Rain:int):
     prob = np.random.choice([up, down, equal], size = days, p=[0.1,0.1,0.8])
     temp = temp_Ini
     rain = prop_Rain
+    rainDay = "No"
     print(prob)
     
     for num in range(1,days +1):
         
         temp = temp + int(prob[num-1])
         temperatures.append(temp)
+        
         
         if temp > 25:
             rain = rain +20
@@ -45,10 +47,12 @@ def weather (days:int, temp_Ini:int, prop_Rain:int):
             temp = temp -1
             rain = 100
             rain_Days += 1
+            rainDay="Si"
         elif rain <= 0:
             rain = 0
+            rainDay="No"
             
-        print(f"Día: {num} , temp: {temp}, Prob Rain: {rain}, , Prob: {prob[num-1]}")
+        print(f"Día: {num} , temp: {temp}, Prob Rain: {rain}, ¿Llueve?: {rainDay} , Prob: {prob[num-1]}")
     
     print(f"Max Temp: {max(temperatures)},Min Temp: {min(temperatures)},Rain Days: {rain_Days}")
     

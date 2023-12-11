@@ -1,3 +1,7 @@
 {
-    "dotnet.defaultSolution": "Retos_2023/Net/Pruebas.sln"
+  "dotnet.defaultSolution": "Retos_2023/Net/Pruebas.sln",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
 }

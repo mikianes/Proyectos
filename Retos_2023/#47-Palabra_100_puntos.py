@@ -41,11 +41,13 @@ def game(word: str):
         value = dict_lower_case.find(letter)
         points = points + value + 1
 
-    print(f"La puntuación de la palabra es:{points}")
+    print(f"La puntuación de la palabra es: {points}.")
     if points == 100:
         print("Has ganado")
+    elif points > 100:
+        print(f"Te has pasado: {points-100} puntos.")
     else:
-        print(f"Has perdido, te has quedado a {100-points} puntos")
+        print(f"Has perdido, te has quedado a {100-points} puntos.")
 
 
 def main():

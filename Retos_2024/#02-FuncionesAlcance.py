@@ -1,6 +1,7 @@
 
 
-""" * - Crea ejemplos de funciones básicas que representen las diferentes
+"""
+ * - Crea ejemplos de funciones básicas que representen las diferentes
  *   posibilidades del lenguaje:
  *   Sin parámetros ni retorno, con uno o varios parámetros, con retorno...
  * - Comprueba si puedes crear funciones dentro de funciones.

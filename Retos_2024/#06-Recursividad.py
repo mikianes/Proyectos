@@ -30,6 +30,8 @@ def fibonacci(n: int):
     if n == 0:
         return 0
     elif n == 1:
+        return 0
+    elif n == 2:
         return 1
     else:
         return fibonacci(n-1) + fibonacci(n-2)
@@ -38,3 +40,4 @@ def fibonacci(n: int):
 countdown(5)
 print(factorial(5))
 print(fibonacci(7))
+print(fibonacci(10))

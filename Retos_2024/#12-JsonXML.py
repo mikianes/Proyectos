@@ -17,88 +17,105 @@
  * lenguaje los datos almacenados en el XML y el JSON.
  * Borra los archivos. """
 
-import json
-import xml.etree.ElementTree as ET
-import xml.dom.minidom
-from bs4 import BeautifulSoup
 import os
+import xml.etree.ElementTree as xml
+import json
+
+data = {
+    "name": "Brais Moure",
+    "age": 36,
+    "birth_date": "29-04-1987",
+    "programming_languages": ["Python", "Kotlin", "Swift"]
+}
+
+xml_file = "mouredev.xml"
+json_file = "mouredev.json"
+
+"""
+Ejercicio
+"""
+
+# XML
 
 
-def create():
-    # JSON
-    datos = {"nombre": "Pedro", "fecha de Nacimiento": "10/2/1983",
-             "Lenguajes de programacion": ["Python", "Java", "SQL"]}
-    datos_jason = json.dumps(datos)
-    # print(datos_jason)
+def create_xml():
 
-    with open("json_ex.json", "w") as file:
-        json.dump(datos, file)
+    root = xml.Element("data")
 
-    # XML
-    m_encoding = "UTF-8"
-    lenguajes_programacion = ["Python", "Java", "SQL"]
+    for key, value in data.items():
+        child = xml.SubElement(root, key)
+        if isinstance(value, list):
+            for item in value:
+                xml.SubElement(child, "item").text = item
+        else:
+            child.text = str(value)
 
-    root = ET.Element("Agenda")
-    persona = ET.SubElement(root, "Persona")
-    ET.SubElement(persona, "Nombre", nombre="Pedro").text = "Pedro"
-    ET.SubElement(persona, "Edad", edad="41").text = "41"
-
-    for lenguaje in lenguajes_programacion:
-        LengDev = ET.SubElement(persona, "Lenguajes")
-        LengDev.text = lenguaje
-
-    dom = xml.dom.minidom.parseString(ET.tostring(root))
-    xml_string = dom.toprettyxml()
-    part1, part2 = xml_string.split("?>")
-
-    with open("xml_ex.xml", "w") as xfile:
-        xfile.write(part1 + "encoding=\"{}\"?>\n".format(m_encoding) + part2)
-        xfile.close()
+    tree = xml.ElementTree(root)
+    tree.write(xml_file)
 
 
-def read():
+create_xml()
 
-    # JSON
-    with open("json_ex.json") as file:
-        data = json.load(file)
+with open(xml_file, "r") as xml_data:
+    print(xml_data.read())
 
-    print("Fichero JSON")
-    print(data)
+os.remove(xml_file)
 
-    # XML
-    bs = BeautifulSoup(open("xml_ex.xml"), "xml")
-    print("Fichero XML")
-    print(bs.prettify())
+# JSON
 
 
-def option(opt: int):
-
-    match opt:
-        case 1:
-            create()
-        case 2:
-            read()
-        case 3:
-            os.remove("json_ex.json")
-            os.remove("xml_ex.xml")
-            exit()
+def create_json():
+    with open(json_file, "w") as json_data:
+        json.dump(data, json_data)
 
 
-def extra():
+create_json()
 
-    print("1. Crear Ficheros JSON y XML")
-    print("2. Leer Ficheros JXON y XML")
-    print("3. Salir y Borrar los archivos")
-    election = int(input("Introduce la opcion deseada:"))
+with open(json_file, "r") as json_data:
+    print(json_data.read())
 
-    option(election)
+os.remove(json_file)
+
+"""
+Extra
+"""
+
+create_xml()
+create_json()
 
 
-def main():
+class Data:
 
-    extra()
+    def __init__(self, name, age, birth_date, programming_languages) -> None:
+        self.name = name
+        self.age = age
+        self.birth_date = birth_date
+        self.programming_languages = programming_languages
 
 
-if __name__ == "__main__":
+with open(xml_file, "r") as xml_data:
 
-    main()
+    root = xml.fromstring(xml_data.read())
+    name = root.find("name").text
+    age = root.find("age").text
+    birth_date = root.find("birth_date").text
+    programming_languages = []
+    for item in root.find("programming_languages"):
+        programming_languages.append(item.text)
+
+    xml_class = Data(name, age, birth_date, programming_languages)
+    print(xml_class.__dict__)
+
+
+with open(json_file, "r") as json_data:
+    json_dict = json.load(json_data)
+    json_class = Data(
+        json_dict["name"],
+        json_dict["age"],
+        json_dict["birth_date"],
+        json_dict["programming_languages"]
+    )
+    print(json_class.__dict__)
+
+os.remove(xml_file)
+os.remove(json_file)

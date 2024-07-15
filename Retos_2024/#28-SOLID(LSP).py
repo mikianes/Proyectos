@@ -15,42 +15,106 @@
  */ """
 
 
-class vehicle:
-    def accelerate(self):
-        return "Acelerate"
-
-    def brake(self):
-        return "Brake"
+# Incorrecto
 
 
-class bus(vehicle):
-    pass
+class Bird:
+    def fly(self):
+        return "Flying"
 
 
-class car(vehicle):
-    pass
+class Chicken(Bird):
+    def fly(self):
+        raise Exception("Los pollos no vuelan")
 
 
-class trailer(vehicle):  # remolque
-    def accelerate(self):
-        return "Can't accelerate"
+# bird = Bird()
+# bird.fly()
+# chicken = Chicken()
+# chicken.fly()
+
+# Correcto
+
+class Bird:
+    def move(self):
+        return "Moving"
 
 
-def test_drive(vehicle):
-    try:
-        test = vehicle.accelerate()
-        test += ", "
-        test += vehicle.brake()
-        return test
-
-    except NotImplementedError as e:
-        return str(e)
+class Chicken(Bird):
+    def move(self):
+        return "Walking"
 
 
-iveco = bus()
-opel = car()
-remolque = trailer()
+bird = Bird()
+print(bird.move())
+chicken = Chicken()
+print(chicken.move())
 
-print(f"Iveco: {test_drive(iveco)}")
-print(f"Opel: {test_drive(opel)}")
-print(f"Trailer: {test_drive(remolque)}")
+bird = Chicken()
+print(bird.move())
+chicken = Bird()
+print(chicken.move())
+
+"""
+Extra
+"""
+
+
+class Vehicle:
+
+    def __init__(self, speed=0):
+        self.speed = speed
+
+    def accelerate(self, increment):
+        self.speed += increment
+        print(f"Velocidad: {self.speed} Km/h")
+
+    def brake(self, decrement):
+        self.speed -= decrement
+        if self.speed <= 0:
+            self.speed = 0
+        print(f"Velocidad: {self.speed} Km/h")
+
+
+class Car(Vehicle):
+    def accelerate(self, increment):
+        print("El coche está acelerando")
+        super().accelerate(increment)
+
+    def brake(self, decrement):
+        print("El coche está frenando")
+        super().brake(decrement)
+
+
+class Bicycle(Vehicle):
+    def accelerate(self, increment):
+        print("La bicicleta está acelerando")
+        super().accelerate(increment)
+
+    def brake(self, decrement):
+        print("La bicicleta está frenando")
+        super().brake(decrement)
+
+
+class Motorcycle(Vehicle):
+    def accelerate(self, increment):
+        print("La moto está acelerando")
+        super().accelerate(increment)
+
+    def brake(self, decrement):
+        print("La moto está frenando")
+        super().brake(decrement)
+
+
+def test_vehicle(vehicle):
+    vehicle.accelerate(2)
+    vehicle.brake(1)
+
+
+car = Car()
+bicycle = Bicycle()
+motorcycle = Motorcycle()
+
+test_vehicle(car)
+test_vehicle(bicycle)
+test_vehicle(motorcycle)

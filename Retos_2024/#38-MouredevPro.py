@@ -33,7 +33,6 @@ from prettytable import PrettyTable
 
 participants = []
 winners = []
-bookWinner = []
 
 
 def lottery(people: list):
